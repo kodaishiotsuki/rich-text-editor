@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form";
 import RichEditorToolbar from "./rich-editor-toolbar";
 
 const Editor = () => {
-  //react-hook-form
+  //フォームの作成
   const { handleSubmit, setValue } = useForm();
 
   const editor = useEditor({
@@ -38,6 +38,7 @@ const Editor = () => {
       },
     },
     onUpdate: ({ editor }) => {
+      //JSONに変換
       const json = editor.getJSON();
       setValue("body", json);
     },
@@ -56,7 +57,7 @@ const Editor = () => {
       <div className="flex-col justify-center items-center">
         <div className="w-2/3 mt-10 mx-auto border-gray-500 border-2">
           <RichEditorToolbar editor={editor} />
-          <div className="p-4 overflow-y-scroll h-[70vh] overflow-hidden mt-3">
+          <div className="p-3 overflow-y-scroll h-[70vh] overflow-hidden mt-3">
             <EditorContent editor={editor} />
           </div>
         </div>

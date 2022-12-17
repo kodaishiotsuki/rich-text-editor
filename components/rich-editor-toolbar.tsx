@@ -3,11 +3,15 @@ import { useCallback } from "react";
 import { AiOutlineLink } from "react-icons/ai";
 import {
   MdCode,
-  MdFormatBold, MdFormatListBulleted,
+  MdFormatBold,
+  MdFormatListBulleted,
   MdFormatListNumbered,
   MdFormatQuote,
-  MdFormatStrikethrough, MdRedo, MdTaskAlt, MdTitle,
-  MdUndo
+  MdFormatStrikethrough,
+  MdRedo,
+  MdTaskAlt,
+  MdTitle,
+  MdUndo,
 } from "react-icons/md";
 
 const RichEditorToolbar = ({ editor }: { editor: Editor }) => {
@@ -27,6 +31,7 @@ const RichEditorToolbar = ({ editor }: { editor: Editor }) => {
     // update link
     editor.chain().focus().extendMarkRange("link").setLink({ href: url }).run();
   }, [editor]);
+
   if (!editor) {
     return null;
   }
