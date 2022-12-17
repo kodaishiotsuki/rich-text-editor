@@ -13,9 +13,7 @@ import { useForm } from "react-hook-form";
 const Home = () => {
   //react-hook-form
   const {
-    register,
     handleSubmit,
-    reset,
     setValue,
     formState: { errors },
   } = useForm();
@@ -43,19 +41,34 @@ const Home = () => {
         class: "prose prose-base m-5 focus:outline-none text-left",
       },
     },
+    onUpdate: ({ editor }) => {
+      const json = editor.getJSON();
+      setValue("body", json);
+    },
   });
+
+  const submit = (data: any) => {
+    console.log(data);
+  };
 
   if (!editor) {
     return null;
   }
 
   return (
-    <div className="rounded-md overflow-hidden border-gray-500 border-2 bg-white w-2/3 h-[50vh] mx-auto mt-10">
-      <RichEditorToolbar editor={editor} />
-      <div className="p-4">
-        <EditorContent editor={editor} />
+    <form onSubmit={handleSubmit(submit)}>
+      <div className="flex-col justify-center items-center">
+        <div className="rounded-md overflow-hidden border-gray-500 border-2 bg-white w-2/3 h-[50vh] mt-10 mx-auto">
+          <RichEditorToolbar editor={editor} />
+          <div className="p-4">
+            <EditorContent editor={editor} />
+          </div>
+        </div>
+        <div className="rounded-full bg-gray-400 px-5 py-3 font-bold text-white shadow w-1/4 mx-auto text-center mt-5 text-2xl">
+          <button>Submit</button>
+        </div>
       </div>
-    </div>
+    </form>
   );
 };
 
