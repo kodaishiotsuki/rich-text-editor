@@ -8,8 +8,18 @@ import Placeholder from "@tiptap/extension-placeholder";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
 import { lowlight } from "lowlight";
+import { useForm } from "react-hook-form";
 
 const Home = () => {
+  //react-hook-form
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setValue,
+    formState: { errors },
+  } = useForm();
+
   const editor = useEditor({
     extensions: [
       StarterKit,
