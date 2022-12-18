@@ -33,8 +33,8 @@ npm install react-hook-form
 # Usage
  
 ```bash
-git clone git@github.com:kodaishiotsuki/dndkit-sample.git
-cd dndkit-sample
+git clone git@github.com:kodaishiotsuki/rich-text-editor.git
+cd rich-text-editor
 npm i
 npm run dev
 ```
